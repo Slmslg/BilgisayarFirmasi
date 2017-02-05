@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BILGISAYARModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BILGISAYARModelStoreContainer">
+    <EntitySet Name="MUSTERI" EntityType="BILGISAYARModel.Store.MUSTERI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="STOK" EntityType="BILGISAYARModel.Store.STOK" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="BILGISAYARModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="URUNLER" EntityType="BILGISAYARModel.Store.URUNLER" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_URUNLER_STOK" Association="BILGISAYARModel.Store.FK_URUNLER_STOK">
+      <End Role="STOK" EntitySet="STOK" />
+      <End Role="URUNLER" EntitySet="URUNLER" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MUSTERI">
+    <Key>
+      <PropertyRef Name="MusteriID" />
+    </Key>
+    <Property Name="MusteriID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriAd" Type="varchar" MaxLength="20" />
+    <Property Name="MusteriSoyad" Type="varchar" MaxLength="20" />
+    <Property Name="MusteriTelNo" Type="varchar" MaxLength="12" />
+    <Property Name="MusteriAdres" Type="varchar" MaxLength="50" />
+    <Property Name="MusteriSehir" Type="varchar" MaxLength="20" />
+    <Property Name="MusteriKartNo" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="STOK">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UrunAd" Type="varchar" MaxLength="30" />
+    <Property Name="Marka" Type="varchar" MaxLength="20" />
+    <Property Name="Mensei" Type="varchar" MaxLength="40" />
+    <Property Name="GarantiSuresi" Type="tinyint" />
+    <Property Name="UrunTuru" Type="varchar" MaxLength="20" />
+    <Property Name="OemTuru" Type="varchar" MaxLength="30" />
+    <Property Name="UrunModel" Type="varchar" MaxLength="10" />
+    <Property Name="StokDurum" Type="varchar" MaxLength="3" />
+    <Property Name="UrunAdet" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="URUNLER">
+    <Key>
+      <PropertyRef Name="SeriNo" />
+    </Key>
+    <Property Name="SeriNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UrunID" Type="int" />
+    <Property Name="UrunAd" Type="varchar" MaxLength="30" />
+    <Property Name="Marka" Type="varchar" MaxLength="20" />
+    <Property Name="Mensei" Type="varchar" MaxLength="40" />
+    <Property Name="GarantiSuresi" Type="tinyint" />
+    <Property Name="UrunTuru" Type="varchar" MaxLength="20" />
+    <Property Name="OemTuru" Type="varchar" MaxLength="30" />
+    <Property Name="UrunModel" Type="varchar" MaxLength="10" />
+    <Property Name="KDV" Type="decimal" Precision="2" Scale="2" />
+    <Property Name="BurutFiyat" Type="decimal" />
+    <Property Name="Fiyat" Type="decimal" />
+    <Property Name="StokDurum" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <Association Name="FK_URUNLER_STOK">
+    <End Role="STOK" Type="BILGISAYARModel.Store.STOK" Multiplicity="0..1" />
+    <End Role="URUNLER" Type="BILGISAYARModel.Store.URUNLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STOK">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="URUNLER">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'BILGISAYAR.dbo.BELLEK' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="BELLEK">
+        <Property Name="SeriNo" Type="int" />
+        <Property Name="RamKapasite" Type="varchar" MaxLength="4" />
+        <Property Name="RAMTipi" Type="varchar" MaxLength="5" />
+        <Property Name="RAMMarka" Type="varchar" MaxLength="15" />
+        <Property Name="HDDKapasite" Type="varchar" MaxLength="6" />
+        <Property Name="HDDTuru" Type="varchar" MaxLength="6" />
+        <Property Name="HDDMarka" Type="varchar" MaxLength="15" />
+        <Property Name="USBTuru" Type="varchar" MaxLength="3" />
+        <Property Name="IsletimSistemi" Type="varchar" MaxLength="20" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'BILGISAYAR.dbo.CPU' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="CPU">
+        <Property Name="SeriNo" Type="int" />
+        <Property Name="CPUNo" Type="varchar" MaxLength="10" />
+        <Property Name="CPUTeknoloji" Type="varchar" MaxLength="15" />
+        <Property Name="CPUMarka" Type="varchar" MaxLength="10" />
+        <Property Name="CekirdekSayisi" Type="tinyint" />
+        <Property Name="CPUHizi" Type="varchar" MaxLength="8" />
+        <Property Name="Cache" Type="varchar" MaxLength="5" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'BILGISAYAR.dbo.GPU' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="GPU">
+        <Property Name="SeriNo" Type="int" />
+        <Property Name="EkranKartiBoyut" Type="varchar" MaxLength="10" />
+        <Property Name="EkranKartiTipi" Type="varchar" MaxLength="15" />
+        <Property Name="EkranKartiMarka" Type="varchar" MaxLength="10" />
+        <Property Name="EkranKArtiKapasite" Type="varchar" MaxLength="4" />
+        <Property Name="Chipset" Type="varchar" MaxLength="30" />
+        <Property Name="Cozunurluk" Type="varchar" MaxLength="10" />
+        <Property Name="KartOkuyucu" Type="varchar" MaxLength="3" />
+        <Property Name="Kamera" Type="varchar" MaxLength="3" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'BILGISAYAR.dbo.KULLANICI' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="KULLANICI">
+        <Property Name="KullaniciTuru" Type="varchar" MaxLength="5" />
+        <Property Name="KullaniciAdi" Type="varchar" MaxLength="20" />
+        <Property Name="KullaniciSifre" Type="varchar" MaxLength="20" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'BILGISAYAR.dbo.SATIS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="SATIS">
+        <Property Name="UrunID" Type="int" />
+        <Property Name="MusteriID" Type="int" />
+        <Property Name="SeriNo" Type="int" />
+        <Property Name="UrunAd" Type="varchar" MaxLength="30" />
+        <Property Name="Marka" Type="varchar" MaxLength="20" />
+        <Property Name="Mensei" Type="varchar" MaxLength="40" />
+        <Property Name="GarantiSuresi" Type="tinyint" />
+        <Property Name="UrunTuru" Type="varchar" MaxLength="20" />
+        <Property Name="OemTuru" Type="varchar" MaxLength="30" />
+        <Property Name="UrunModel" Type="varchar" MaxLength="10" />
+        <Property Name="UrunAdet" Type="int" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'BILGISAYAR.dbo.SERVIS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="SERVIS">
+        <Property Name="MusteriID" Type="int" />
+        <Property Name="SeriNo" Type="int" />
+        <Property Name="GarantiSuresi" Type="tinyint" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'BILGISAYAR.dbo.SILINMIS_URUN_KAYITLAR' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="SILINMIS_URUN_KAYITLAR">
+        <Property Name="SeriNo" Type="int" />
+        <Property Name="UrunID" Type="int" />
+        <Property Name="UrunAd" Type="varchar" MaxLength="30" />
+        <Property Name="Marka" Type="varchar" MaxLength="20" />
+        <Property Name="Mensei" Type="varchar" MaxLength="40" />
+        <Property Name="GarantiSuresi" Type="tinyint" />
+        <Property Name="UrunTuru" Type="varchar" MaxLength="20" />
+        <Property Name="OemTuru" Type="varchar" MaxLength="30" />
+        <Property Name="UrunModel" Type="varchar" MaxLength="10" />
+        <Property Name="KDV" Type="decimal" />
+        <Property Name="BurutFiyat" Type="int" />
+        <Property Name="Fiyat" Type="int" />
+        <Property Name="StokDurum" Type="varchar" MaxLength="3" />
+        <Property Name="RamKapasite" Type="varchar" MaxLength="4" />
+        <Property Name="RAMTipi" Type="varchar" MaxLength="5" />
+        <Property Name="RAMMarka" Type="varchar" MaxLength="15" />
+        <Property Name="HDDKapasite" Type="varchar" MaxLength="6" />
+        <Property Name="HDDTuru" Type="varchar" MaxLength="6" />
+        <Property Name="HDDMarka" Type="varchar" MaxLength="15" />
+        <Property Name="USBTuru" Type="varchar" MaxLength="3" />
+        <Property Name="IsletimSistemi" Type="varchar" MaxLength="20" />
+        <Property Name="CPUNo" Type="varchar" MaxLength="10" />
+        <Property Name="CPUTeknoloji" Type="varchar" MaxLength="15" />
+        <Property Name="CPUMarka" Type="varchar" MaxLength="10" />
+        <Property Name="CekirdekSayisi" Type="tinyint" />
+        <Property Name="CPUHizi" Type="varchar" MaxLength="8" />
+        <Property Name="EkranKartiBoyut" Type="varchar" MaxLength="10" />
+        <Property Name="EkranKartiTipi" Type="varchar" MaxLength="15" />
+        <Property Name="EkranKartiMarka" Type="varchar" MaxLength="10" />
+        <Property Name="EkranKArtiKapasite" Type="varchar" MaxLength="4" />
+        <Property Name="Chipset" Type="varchar" MaxLength="30" />
+        <Property Name="Cozunurluk" Type="varchar" MaxLength="10" />
+        <Property Name="Cache" Type="varchar" MaxLength="5" />
+        <Property Name="KartOkuyucu" Type="varchar" MaxLength="3" />
+        <Property Name="Kamera" Type="varchar" MaxLength="3" />
+      </EntityType>-->
+</Schema>

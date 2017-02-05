@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BILGISAYARModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BILGISAYAREntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="MUSTERI" EntityType="BILGISAYARModel.MUSTERI" />
+    <EntitySet Name="STOK" EntityType="BILGISAYARModel.STOK" />
+    <EntitySet Name="sysdiagrams" EntityType="BILGISAYARModel.sysdiagrams" />
+    <EntitySet Name="URUNLER" EntityType="BILGISAYARModel.URUNLER" />
+    <AssociationSet Name="FK_URUNLER_STOK" Association="BILGISAYARModel.FK_URUNLER_STOK">
+      <End Role="STOK" EntitySet="STOK" />
+      <End Role="URUNLER" EntitySet="URUNLER" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MUSTERI">
+    <Key>
+      <PropertyRef Name="MusteriID" />
+    </Key>
+    <Property Name="MusteriID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriAd" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MusteriSoyad" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MusteriTelNo" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="MusteriAdres" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MusteriSehir" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MusteriKartNo" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="STOK">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunAd" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Marka" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Mensei" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="GarantiSuresi" Type="Byte" />
+    <Property Name="UrunTuru" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="OemTuru" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="UrunModel" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="StokDurum" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="UrunAdet" Type="Int32" />
+    <NavigationProperty Name="URUNLER" Relationship="BILGISAYARModel.FK_URUNLER_STOK" FromRole="STOK" ToRole="URUNLER" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="URUNLER">
+    <Key>
+      <PropertyRef Name="SeriNo" />
+    </Key>
+    <Property Name="SeriNo" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="UrunAd" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Marka" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Mensei" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="GarantiSuresi" Type="Byte" />
+    <Property Name="UrunTuru" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="OemTuru" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="UrunModel" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="KDV" Type="Decimal" Precision="2" Scale="2" />
+    <Property Name="BurutFiyat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="StokDurum" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="STOK" Relationship="BILGISAYARModel.FK_URUNLER_STOK" FromRole="URUNLER" ToRole="STOK" />
+  </EntityType>
+  <Association Name="FK_URUNLER_STOK">
+    <End Role="STOK" Type="BILGISAYARModel.STOK" Multiplicity="0..1" />
+    <End Role="URUNLER" Type="BILGISAYARModel.URUNLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STOK">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="URUNLER">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

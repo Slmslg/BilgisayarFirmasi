@@ -1,0 +1,17 @@
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\bin\Debug\BilgisayarFirmasi.exe.config
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\bin\Debug\BilgisayarFirmasi.exe
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\bin\Debug\BilgisayarFirmasi.pdb
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.csprojResolveAssemblyReference.cache
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.Properties.Resources.resources
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.csproj.GenerateResource.Cache
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.exe
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.pdb
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.Admin.resources
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.User.resources
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.UrunEkle.resources
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.UrunGuncelle.resources
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.Giris.resources
+C:\Users\Lenovo\Documents\Visual Studio 2012\Projects\BilgisayarFirmasi\BilgisayarFirmasi\bin\Debug\itextsharp.dll
+C:\Users\Lenovo\Music\Desktop\Github\BilgisayarFirmasi\BilgisayarFirmasi\bin\Debug\BilgisayarFirmasi.exe.config
+C:\Users\Lenovo\Music\Desktop\Github\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.exe
+C:\Users\Lenovo\Music\Desktop\Github\BilgisayarFirmasi\BilgisayarFirmasi\obj\Debug\BilgisayarFirmasi.pdb
